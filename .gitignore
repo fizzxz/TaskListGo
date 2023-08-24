@@ -1,0 +1,8 @@
+# ignore env file
+#structure of env file:
+#DB_USER=
+#DB_PASSWORD=
+#DB_HOST=
+#DB_PORT=
+#DB_NAME=
+.env
