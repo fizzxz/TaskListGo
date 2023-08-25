@@ -29,7 +29,7 @@ func main() {
 	fmt.Println(timeExample)
 
 	myList := task.NewToDoList(db)
-	myList.AddTask("finish task list", time.Now().Add(time.Hour*24*7))
+	// myList.AddTask("finish task list", time.Now().Add(time.Hour*24*7))
 	list, err := myList.ListTasks()
 	if err != nil {
 		log.Fatal(err)

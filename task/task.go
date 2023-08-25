@@ -44,8 +44,29 @@ func (list *ToDoList) CompleteTask(taskID int) error {
 func (list *ToDoList) ChangeTaskName(taskID int, newName string) error {
 	query := "UPDATE tasks SET title = ? WHERE id = ?"
 
-	// Execute the query
 	_, err := list.db.Exec(query, newName, taskID)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (list *ToDoList) ChangeTaskDueDate(taskID int, newDueDate string) error {
+	query := "UPDATE tasks SET due_date = ? WHERE id = ?"
+
+	_, err := list.db.Exec(query, newDueDate, taskID)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (list *ToDoList) MarkTaskAsCompleted(taskID int) error {
+	query := "UPDATE tasks SET completed = ? WHERE id = ?"
+
+	_, err := list.db.Exec(query, true, taskID)
 	if err != nil {
 		return err
 	}
