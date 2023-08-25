@@ -41,6 +41,18 @@ func (list *ToDoList) CompleteTask(taskID int) error {
 	return nil
 }
 
+func (list *ToDoList) ChangeTaskName(taskID int, newName string) error {
+	query := "UPDATE tasks SET title = ? WHERE id = ?"
+
+	// Execute the query
+	_, err := list.db.Exec(query, newName, taskID)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (list *ToDoList) RemoveTask(taskID int) error {
 	query := "DELETE FROM tasks WHERE id = ?"
 
